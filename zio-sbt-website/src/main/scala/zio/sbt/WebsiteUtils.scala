@@ -268,6 +268,16 @@ object WebsiteUtils {
           ),
           jobs = Seq(
             Job(
+              id = "debug",
+              name = "Debug",
+              steps = Seq(
+                Step.SingleStep(
+                  name = "debug step",
+                  run = Some("${{ toJSON(github) }}")
+                )
+              )
+            ),
+            Job(
               id = "build",
               name = "Build and Test",
               condition = Some(
@@ -311,7 +321,7 @@ object WebsiteUtils {
               name = "Generate README",
               condition = updateReadmeCondition orElse Some(
                 Condition.Expression("github.event_name == 'push'") ||
-                  Condition.Expression("github.event_name == 'release'") &&
+                  Condition.Expression("github.event_name == 'released'") ||
                   Condition.Expression("github.event_name == 'published'")
               ),
               steps = Seq(
