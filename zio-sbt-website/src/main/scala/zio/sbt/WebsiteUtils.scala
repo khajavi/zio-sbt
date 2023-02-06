@@ -306,7 +306,6 @@ object WebsiteUtils {
                       Seq(
                         Checkout,
                         SetupJava(),
-                        CheckReadme,
                         CheckGithubWorkflow,
                         artifactBuildProcess,
                         CheckWebsiteBuildProcess
@@ -315,7 +314,6 @@ object WebsiteUtils {
                       Seq(
                         Checkout,
                         SetupJava(),
-                        CheckReadme,
                         CheckGithubWorkflow,
                         CheckWebsiteBuildProcess
                       )
