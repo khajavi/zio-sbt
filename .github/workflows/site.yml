@@ -137,6 +137,8 @@ jobs:
   generate-readme:
     name: Generate README
     runs-on: ubuntu-latest
+    needs:
+    - release
     if: ${{ (github.event_name == 'push') || ((github.event_name == 'release') && (github.event.action == 'published')) }}
     steps:
     - name: Git Checkout
