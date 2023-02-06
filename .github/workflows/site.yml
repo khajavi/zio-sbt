@@ -17,9 +17,8 @@ env:
   pull_request: {}
 jobs:
   build:
-    name: Build and Test
+    name: Build
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3.3.0
@@ -31,8 +30,6 @@ jobs:
         distribution: temurin
         java-version: '17'
         check-latest: true
-    - name: Check if the README file is up to date
-      run: sbt  docs/checkReadme
     - name: Check if the site workflow is up to date
       run: sbt  docs/checkGithubWorkflow
     - name: Check artifacts build process
@@ -138,6 +135,8 @@ jobs:
   generate-readme:
     name: Generate README
     runs-on: ubuntu-latest
+    needs:
+    - release
     if: ${{ (github.event_name == 'push') || ((github.event_name == 'release') && (github.event.action == 'published')) }}
     steps:
     - name: Git Checkout

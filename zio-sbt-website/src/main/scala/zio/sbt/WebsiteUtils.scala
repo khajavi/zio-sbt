@@ -298,10 +298,7 @@ object WebsiteUtils {
           jobs = Seq(
             Job(
               id = "build",
-              name = "Build and Test",
-              condition = Some(
-                Condition.Expression("github.event_name == 'pull_request'")
-              ),
+              name = "Build",
               steps = Seq(
                 Step.StepSequence(
                   checkArtifactBuildProcess match {
@@ -309,7 +306,6 @@ object WebsiteUtils {
                       Seq(
                         Checkout,
                         SetupJava(),
-                        CheckReadme,
                         CheckGithubWorkflow,
                         artifactBuildProcess,
                         CheckWebsiteBuildProcess
@@ -318,7 +314,6 @@ object WebsiteUtils {
                       Seq(
                         Checkout,
                         SetupJava(),
-                        CheckReadme,
                         CheckGithubWorkflow,
                         CheckWebsiteBuildProcess
                       )
@@ -392,6 +387,7 @@ object WebsiteUtils {
             Job(
               id = "generate-readme",
               name = "Generate README",
+              need = Seq("release"),
               condition = updateReadmeCondition orElse Some(
                 Condition.Expression("github.event_name == 'push'") ||
                   Condition.Expression("github.event_name == 'release'") &&
