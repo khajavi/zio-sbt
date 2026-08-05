@@ -22,7 +22,7 @@ addSbtPlugin("org.portable-scala" % "sbt-platform-deps"             % "1.0.2")
 // Benchmarking Plugins
 addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.4.8")
 
-libraryDependencies += "org.snakeyaml" % "snakeyaml-engine" % "3.0.1"
+libraryDependencies += "org.snakeyaml" % "snakeyaml-engine" % "3.1"
 libraryDependencies += "dev.zio"      %% "zio"              % "2.1.24"
 libraryDependencies += "dev.zio"      %% "zio-json"         % "0.9.0"
 libraryDependencies += "dev.zio"      %% "zio-json-yaml"    % "0.9.0"
