@@ -24,7 +24,7 @@ addSbtPlugin("pl.project13.scala" % "sbt-jmh"      % "0.4.8")
 addSbtPlugin("pl.project13.scala" % "sbt-jcstress" % "0.2.0")
 
 // Binary Compatibility Plugin
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.1.6")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.2.0")
 
 libraryDependencies += "org.snakeyaml" % "snakeyaml-engine" % "3.1"
 libraryDependencies += "dev.zio"      %% "zio"              % "2.1.26"
